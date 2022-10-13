@@ -2,59 +2,52 @@
 #include "time.h"
 #include "malloc.h"
 #include <stdio.h>
+#include "string.h"
 #pragma warning(disable : 4996)
+struct {
+
+	char Name[10];
+	char Surname[10];
+	char faculty[10];
+	int id;
+
+
+}stud[3], search;
+
+
 int main()
 {
 
-	srand(time(NULL));
-	int* a;
-	int m, n, min = 999, max = 0, dif = 0, ssum = 0, rowsum = 0;
-	printf("Enter list size: \n");
-	scanf("%d%d", &m, &n); //для двух +
+	for (int i = 0; i < 3; i++) {
 
-	a = (int*)malloc((m * n) * sizeof(int));
-
-	*(a) = rand() % 100;
-	//printf("%5d", *(a));
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			*(a + i * m + j) = rand() % 100;
-
-			printf("%5d ", *(a + i * m + j));
-			ssum += *(a + i * m + j);
-
-		}
-		printf(" String Sum %d: %d", i, ssum);
-
-		printf("\n");
+		printf("Enter student's name:");
+		scanf("%s", stud[i].Name);
+		printf("Enter student's surname:");
+		scanf("%s", stud[i].Surname);
+		printf("Enter student's faculty:");
+		scanf("%s", stud[i].faculty);
+		stud[i].id++;
 	}
-	for (int k = 0; k < n; k++) {
 
-		for (int l = 0; l < m; l++) {
+	printf("Enter student's name you need to find:");
+	scanf("%s", search.Name);
+	printf("Enter student's surname name you need to find:");
+	scanf("%s", search.Surname);
 
+	short found = 0;
+	for (int i = 0; i < 3; i++) {
+		if (strcmp(stud[i].Name, search.Name) == 0 && strcmp(stud[i].Surname, search.Surname) == 0) {
 
-			if (max < *(a + k * m + l)) {
-				max = *(a + k * m + l);
-
-			}
-			if (min > *(a + k * m + l)) {
-				min = *(a + k * m + l);
-
-			}
+			found = 1;
+			printf("Found! This person's id: %d", stud[i].id);
 		}
+
+
 	}
-	dif = max - min;
-	printf("\nMax and Min difference: %d", dif);
+	if (found == 0) {
 
-
-	//рандом этого массива +
-
-	//написать программу, вычисляющую разницу между максимальным и минимальным элементами массива. +
-
-	//написать программу, вычисляющую сумму значений в каждом столбце (или строке) двумерного массива.
-
-	free(a);
+		printf("No matches.");
+	}
 	getchar();
 	getchar();
 	return 0;
