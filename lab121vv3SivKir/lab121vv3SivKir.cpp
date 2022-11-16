@@ -15,7 +15,7 @@ int main()
 	a = (int*)malloc((m * n) * sizeof(int));
 
 	*(a) = rand() % 100;
-	//printf("%5d", *(a));
+	
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
