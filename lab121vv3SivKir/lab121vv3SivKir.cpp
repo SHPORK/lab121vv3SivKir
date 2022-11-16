@@ -10,7 +10,7 @@ int main()
 	int* a;
 	int m, n, min = 999, max = 0, dif = 0, ssum = 0, rowsum = 0;
 	printf("Enter list size: \n");
-	scanf("%d%d", &m, &n); //для двух +
+	scanf("%d%d", &m, &n); //для двух 
 
 	a = (int*)malloc((m * n) * sizeof(int));
 
