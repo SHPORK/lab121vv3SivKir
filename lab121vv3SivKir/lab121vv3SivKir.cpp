@@ -26,20 +26,19 @@ int main()
 		scanf("%s", stud[i].Surname);
 		printf("Enter student's faculty:");
 		scanf("%s", stud[i].faculty);
-		stud[i].id++;
+		stud[i].id = i;
 	}
 
-	printf("Enter student's name you need to find:");
+	printf("Enter what you need to find:");
 	scanf("%s", search.Name);
-	printf("Enter student's surname name you need to find:");
-	scanf("%s", search.Surname);
+
 
 	short found = 0;
 	for (int i = 0; i < 3; i++) {
-		if (strcmp(stud[i].Name, search.Name) == 0 && strcmp(stud[i].Surname, search.Surname) == 0) {
+		if (strcmp(stud[i].Name, search.Name) == 0 || strcmp(stud[i].Surname, search.Name) == 0 || strcmp(stud[i].faculty, search.Name) == 0) {
 
 			found = 1;
-			printf("Found! This person's id: %d", stud[i].id);
+			printf("Found! This person's id: %d\n", stud[i].id);
 		}
 
 
